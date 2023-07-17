@@ -75,3 +75,4 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 # latest rspec version
 gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
+gem 'rails-controller-testing'
