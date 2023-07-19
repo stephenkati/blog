@@ -1,0 +1,20 @@
+<div class="p-4 flex flex-col gap-4 items-center">
+  <h2 class="text-bg-950 font-bold">Create a post</h2>
+
+  <%= form_with model: @post, url: user_posts_path(@user), html: { class: "flex flex-col gap-2 items-center" } do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title, required: true, class: "rounded-md p-2 text-white" %>
+    </div>
+
+    <div>
+      <%= f.label :text %>
+      <%= f.text_field :text, required: true, class: "rounded-md p-2 text-white" %>
+    </div>
+
+    <div>
+      <%= f.submit "Submit", class: "text-white bg-blue-500 px-4 py-2 rounded-full" %>
+    </div>
+  <% end %>
+
+</div>
