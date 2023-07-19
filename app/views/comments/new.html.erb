@@ -1,0 +1,9 @@
+<%= form_with model: [@user, @post, @comment], url: user_post_comments_path, html: { class: " p-4 flex flex-col items-center" } do |f| %>
+  <div>
+    <%= f.label :text, required: true %>
+    <%= f.text_field :text, required: true, class: "rounded-md p-2 text-white" %>
+  </div>
+  <div>
+    <%= f.submit "Submit", class: "text-white hover:bg-blue-950 bg-blue-500 rounded-full py-2 px-4" %>
+  </div>
+<% end %>
