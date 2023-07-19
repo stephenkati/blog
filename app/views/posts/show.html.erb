@@ -1,1 +1,30 @@
-<h1> This a post page </h1>
+<div class="flex justify-center w-full p-4">
+
+  <div class="flex flex-col w-full gap-4">
+
+    <div class="border-2 p-2">
+      
+      <div class="flex justify-between">
+        <h1 class="font-bold"> <%= @post.title %> </h1>
+
+        <div class="flex gap-2">
+          <p>Comments: <%= @post.comments_counter %> </p>
+          <p>Likes: <%= @post.likes_counter %> </p>
+        </div>
+      </div>
+
+      <p class="p-4" > <%= @post.text %> </p>
+
+    </div>
+
+    <% if @comments.present? %>
+      <div class="border-2 p-4">
+        <% @comments.each do |comment| %>
+          <%= render "shared/comment", comment: comment %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

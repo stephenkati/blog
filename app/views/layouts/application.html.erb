@@ -8,9 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.2.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
+  <body class="bg-slate-100 text-black w-screen flex flex-col items-center min-h-screen">
     <%= yield %>
   </body>
 </html>

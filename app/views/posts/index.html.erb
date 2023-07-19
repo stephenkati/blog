@@ -1,1 +1,23 @@
-<h1> This posts page </h1>
+<div class="p-4 w-full flex flex-col items-center">
+  <%= render "shared/user", user:@user %>
+
+  <div class="py-7 w-full">
+    <% @posts.each do |post| %>
+      <div class="flex flex-col py-7 gap-2">
+      
+        <%= render "shared/post", post: post, user: @user %>
+
+        <% if post.last_five_comments.present? %>
+          <div class="border-2 p-2">
+            <% post.last_five_comments.each do |comment| %>
+              <%= render "shared/comment", comment: comment %>
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+
+    <% end %>
+  </div>
+
+</div>
