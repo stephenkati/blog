@@ -1,7 +1,7 @@
 <%= link_to user_post_path(user, post) do %>
 
   <div class=" flex flex-col gap-4 w-full max-w-md p-2 min-h-min border-2 ">
-    <h2> <%= post.title %> </h2>
+    <h2 class="font-bold"> <%= post.title %> </h2>
     <p> <%= post.text %> </p>
     <div class="flex gap-2 w-full justify-end">
       <p>Comments: <%= post.comments_counter %> </p>

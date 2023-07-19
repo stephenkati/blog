@@ -20,7 +20,6 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -108,7 +107,7 @@ To run tests, run the following command:
 ```
 
 
-### Deployment
+### Deployment <a name="triangular_flag_on_post-deployment"></a>
 
   - [N/A]
 
