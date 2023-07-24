@@ -11,7 +11,6 @@ RSpec.describe UsersController, type: :request do
       get users_path
       expect(response).to render_template(:index)
     end
-
   end
   describe 'Get users#show' do
     let(:user) { User.create(name: 'John', photo: 'https://unsplash.com/photo', bio: 'bio') }
@@ -27,6 +26,5 @@ RSpec.describe UsersController, type: :request do
 
       expect(response).to render_template(:show)
     end
-
   end
 end

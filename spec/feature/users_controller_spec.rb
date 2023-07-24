@@ -35,12 +35,11 @@ describe 'user/index', type: :feature do
   end
 
   it 'should redirect to that user\'s show page on clicking a user' do
-
     @user3 = User.create(name: 'kate', photo: 'photo_url_2', bio: 'Street art lover')
 
     visit users_path
 
-    within ".users" do
+    within '.users' do
       click_link(@user3.name)
     end
 
@@ -62,7 +61,7 @@ describe 'user/show', type: :feature do
     visit user_path(@user1)
 
     expect(page).to have_css("img[src*='photo_url']")
-    
+
     expect(page).to have_content('Tim')
 
     expect(page).to have_content('Number of posts: 4')
