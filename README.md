@@ -117,11 +117,16 @@ To run tests, run the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
- *[STEPHEN KATULI]*
- 
+👤 **STEPHEN KATULI**
+
 - GitHub: [@githubhandle](https://github.com/stephenkati)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/stephen-katuli/)
+
+👤 **JOSECK OSUGO**
+
+- GitHub: [0sugo](https://github.com/0sugo)
+- Twitter: [@0sugo5](https://twitter.com/osugo5)
+- LinkedIn: [Joseck Osugo](https://www.linkedin.com/in/joseck-osugo/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
