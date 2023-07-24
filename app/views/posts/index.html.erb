@@ -21,7 +21,8 @@
         </div>
 
         <% if post.last_five_comments.present? %>
-          <%= render "shared/comment", comments: post.last_five_comments %>
+          <% @comments = post.last_five_comments %>
+          <%= render "shared/comment", comments: @comments %>
         <% end %>
 
       </div>
