@@ -15,7 +15,6 @@ describe 'user/index', type: :feature do
   it 'shows the profile picture for each user' do
     visit users_path
 
-    puts page.inspect
     expect(page).to have_css("img[src*='photo_url']")
 
     expect(page).to have_css("img[src*='photo_url_2']")
