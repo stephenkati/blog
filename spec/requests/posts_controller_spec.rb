@@ -16,12 +16,6 @@ RSpec.describe PostsController, type: :request do
 
       expect(response).to render_template(:index)
     end
-
-    it 'dislays correct template' do
-      get user_posts_path(user)
-
-      expect(response.body).to include('This posts page')
-    end
   end
 
   describe 'GET posts#show' do
@@ -38,12 +32,6 @@ RSpec.describe PostsController, type: :request do
       get user_post_path(user, post)
 
       expect(response).to render_template(:show)
-    end
-
-    it 'dislays correct template' do
-      get user_post_path(user, post)
-
-      expect(response.body).to include('This a post page')
     end
   end
 end

@@ -1,3 +1,7 @@
-<div class="">
-  <p> <span class="font-bold"> <%= comment.author.name %>: </span> <%= comment.text %> </p>
+<div class="border-2 p-4">
+  <% comments.each do |comment| %>      
+  <div class="">
+    <p> <span class="font-bold"> <%= comment.author.name %>: </span> <%= comment.text %> </p>
+  </div>
+  <% end %>
 </div>
