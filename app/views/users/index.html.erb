@@ -1,4 +1,14 @@
 <div class="flex flex-col gap-2 w-full items-center p-2 users">
+
+  <div>
+    <% if user_signed_in? %> 
+      <h1 class="text-blue-950"> Hi <%= current_user.name.split.first %> </h1> 
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "px-4 py-2 bg-blue-500 rounded-lg" %> 
+    <% else %>
+      <%= button_to "Sign in", new_user_session_path, class: "px-4 py-2 bg-blue-500 rounded-lg" %> 
+    <% end %>
+  </div>
+
   <% @users.each do |user| %>
 
     <%= render "shared/user", user: user %>

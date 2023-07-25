@@ -3,8 +3,7 @@ require 'rails_helper'
 describe 'posts', type: :feature do
   describe '#index' do
     before(:each) do
-      @user = User.create(name: 'Jimmy', bio: 'This is user page', photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=
-      # M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80')
+      @user = User.create(name: 'Jimmy', bio: 'This is user page', photo: 'photo')
 
       @post1 = Post.create(title: 'Hello', text: 'This is my first post', author_id: @user.id)
       @post2 = Post.create(title: 'Adventure', text: 'Checkout this waterfall', author_id: @user.id)
