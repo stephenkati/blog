@@ -23,7 +23,6 @@
         <% if post.last_five_comments.present? %>
           <% @comments = post.last_five_comments %>
           <%= render "shared/comment", comments: @comments %>
-          <%= render "shared/comment", comments: post.last_five_comments %>
         <% end %>
 
       </div>
