@@ -15,14 +15,20 @@
 
       <p class="p-4" > <%= @post.text %> </p>
 
+       <% if can? :destroy, @post %>
+            <%= button_to "Delete", user_post_path(@user, @post), method: :delete, class: "text-white p-2 hover:bg-red-800 bg-red-500 rounded-full" %>
+          <% end %>
+
     </div>
 
-    <div class="w-full flex gap-2">
-      <%= link_to "Add Comment", new_user_post_comment_path(@post.author.id, @post.id), class: "text-white hover:bg-blue-950 bg-blue-500 rounded-full py-2 px-4 text-center" %>
-      <%= form_with url: user_post_likes_path(@post.author.id, @post.id) do |form| %>
-        <%= form.submit 'Like', class: "text-white hover:bg-blue-950 bg-blue-500 rounded-full py-2 px-4 text-center" %>
-      <% end %>
-    </div>
+    <% if can? :create, @comment, @like %>
+      <div class="w-full flex gap-2">
+        <%= link_to "Add Comment", new_user_post_comment_path(@post.author.id, @post.id), class: "text-white hover:bg-blue-950 bg-blue-500 rounded-full py-2 px-4 text-center" %>
+        <%= form_with url: user_post_likes_path(@post.author.id, @post.id) do |form| %>
+          <%= form.submit 'Like', class: "text-white hover:bg-blue-950 bg-blue-500 rounded-full py-2 px-4 text-center" %>
+        <% end %>
+      </div>
+    <% end %>
 
     <% if @comments.present? %>
       <%= render "shared/comment", comments: @comments %>
