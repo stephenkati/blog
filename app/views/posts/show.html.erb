@@ -32,6 +32,15 @@
       <%= render "shared/comment", comments: @comments %>
     <% end %>
 
+<div class="post-card">
+    <%= link_to user_post_path(@individual_post, post.id) do %>
+      <h3 class="post-heading"><%= post.title %></h3>
+      <p class="post-text"><%= truncate(post.text, length: 11, omission: '...') %></p>
+      <p class="post-comments">Comments: <%= post.comments_counter %></p>
+      <p class="post-likes">Likes: <%= post.likes_counter %></p>
+    <% end %>
+  </div>
+
   </div>
 
 </div>
