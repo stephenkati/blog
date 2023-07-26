@@ -74,6 +74,7 @@ end
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # latest rspec version
+gem 'cancancan'
 gem 'devise'
 gem 'letter_opener'
 gem 'rails-controller-testing'

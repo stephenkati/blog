@@ -15,6 +15,10 @@
 
       <p class="p-4" > <%= @post.text %> </p>
 
+       <% if can? :destroy, @post %>
+            <%= button_to "Delete", user_post_path(@user, @post), method: :delete, class: "text-white p-2 hover:bg-red-800 bg-red-500 rounded-full" %>
+          <% end %>
+
     </div>
 
     <div class="w-full flex gap-2">

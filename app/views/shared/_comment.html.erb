@@ -1,7 +1,10 @@
 <div class="border-2 p-4">
   <% comments.each do |comment| %>      
-  <div class="">
+  <div class="flex items-center gap-2">
     <p> <span class="font-bold"> <%= comment.author.name %>: </span> <%= comment.text %> </p>
+    <% if can? :destroy, @comment %>
+      <%= button_to "Delete", new_user_post_comment_path(@user, @post, comment), class: "text-white p-1 hover:bg-red-800 bg-red-500 rounded-full" %>
+    <% end %>
   </div>
   <% end %>
 </div>
