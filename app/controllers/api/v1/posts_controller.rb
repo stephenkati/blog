@@ -9,7 +9,7 @@ class Api::V1::PostsController < ApplicationController
     if @posts
       render json: { status: 'Success', message: 'Posts fetched successfully', data: @posts }, status: :ok
     else
-      render json: @posts.errors, status: :bad_request
+      render json: { status: 'Error', message: 'Failed to fetch posts!', errors: @posts.errors }, status: :bad_request
     end
   end
 
@@ -20,7 +20,7 @@ class Api::V1::PostsController < ApplicationController
     if @post
       render json: { status: 'Success', message: 'Post fetched successfully', data: @post }, status: :ok
     else
-      render json: @post.errors, status: :bad_request
+      render json: { status: 'Error', message: 'Failed to fetch post!', errors: @post.errors }, status: :bad_request
     end
   end
 end
