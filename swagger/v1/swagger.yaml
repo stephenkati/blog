@@ -1,0 +1,477 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/posts/{post_id}/comments":
+    get:
+      summary: Retrieves all comments
+      tags:
+      - Comments
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Comments found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Success
+                    message: Comment fetched successfully
+                    data:
+                    - id: 1
+                      text: This is my first comment
+                      post_id: 1
+                      author_id: 1
+                    - id: 2
+                      text: This is my second comment
+                      post_id: 1
+                      author_id: 1
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        text:
+                          type: string
+                        post_id:
+                          type: integer
+                        author_id:
+                          type: integer
+                      required:
+                      - id
+                      - text
+                      - post_id
+                      - author_id
+                required:
+                - status
+                - message
+                - data
+        '404':
+          description: Comments not found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Error
+                    message: No comments found!
+                    errors: 'Comments not found for post with id: ''invalid'''
+    post:
+      summary: Creates a comment
+      tags:
+      - Comments
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Comment created
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Success
+                    message: Comment Created
+                    data:
+                      id: 1
+                      text: This is my first comment
+                      post_id: 1
+                      author_id: 1
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      text:
+                        type: string
+                      post_id:
+                        type: integer
+                      author_id:
+                        type: integer
+                    required:
+                    - id
+                    - text
+                    - post_id
+                    - author_id
+                required:
+                - status
+                - message
+                - data
+        '422':
+          description: Invalid request
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Not Found
+                    message: Details not found
+                    data:
+                      text:
+                      - can't be blank
+                      post_id:
+                      - can't be blank
+                      author_id:
+                      - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                post_id:
+                  type: integer
+                author_id:
+                  type: integer
+              required:
+              - text
+              - post_id
+              - author_id
+  "/api/v1/users/{user_id}/posts":
+    get:
+      summary: Retrieves all posts
+      tags:
+      - Posts
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Posts found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Success
+                    message: Posts fetched successfully
+                    data:
+                    - id: 1
+                      title: Post 1
+                      text: This is my first post
+                      comments_counter: 0
+                      likes_counter: 0
+                      author_id: 1
+                    - id: 2
+                      title: Post 2
+                      text: This is my second post
+                      comments_counter: 0
+                      likes_counter: 0
+                      author_id: 1
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        text:
+                          type: string
+                        comments_counter:
+                          type: integer
+                        likes_counter:
+                          type: integer
+                        author_id:
+                          type: integer
+                      required:
+                      - id
+                      - title
+                      - text
+                      - comments_counter
+                      - likes_counter
+                      - author_id
+                required:
+                - status
+                - message
+                - data
+        '404':
+          description: Posts not found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Error
+                    message: Failed to fetch posts!
+                    errors: 'Posts not found for user with id: ''invalid'''
+  "/api/v1/users/{user_id}/posts/{id}":
+    get:
+      summary: Retrieves a specific post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Post found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Success
+                    message: Post fetched successfully
+                    data:
+                      id: 1
+                      title: Post 1
+                      text: This is my first post
+                      comments_counter: 0
+                      likes_counter: 0
+                      author_id: 1
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      title:
+                        type: string
+                      text:
+                        type: string
+                      comments_counter:
+                        type: integer
+                      likes_counter:
+                        type: integer
+                      author_id:
+                        type: integer
+                    required:
+                    - id
+                    - title
+                    - text
+                    - comments_counter
+                    - likes_counter
+                    - author_id
+                required:
+                - status
+                - message
+                - data
+        '404':
+          description: Post not found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Error
+                    message: Failed to fetch post!
+                    errors: 'Post not found for user with id: ''invalid'' and post
+                      id: ''invalid'''
+  "/api/v1/users":
+    get:
+      summary: Retrieves all users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Users found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Success
+                    message: Users fetched successfully
+                    data:
+                    - id: 1
+                      name: Denver
+                      photo: image_url
+                      bio: Miguel Ángel García de la Herrán, best known as Miguel
+                        Herrán, is a Spanish actor.
+                      email: "<EMAIL>"
+                      posts_counter: 2
+                    - id: 2
+                      name: Professor
+                      photo: image_url
+                      bio: A criminal mastermind who has dedicated his life to planning
+                        the perfect heist.
+                      email: "<EMAIL>"
+                      posts_counter: 3
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        photo:
+                          type: string
+                        bio:
+                          type: string
+                        email:
+                          type: string
+                        posts_counter:
+                          type: integer
+                      required:
+                      - id
+                      - name
+                      - photo
+                      - bio
+                      - email
+                      - posts_counter
+                required:
+                - status
+                - message
+                - data
+        '404':
+          description: Users not found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Error
+                    message: Failed to fetch users!
+                    errors: Users not found!
+  "/api/v1/users/{id}":
+    get:
+      summary: show a user with given ID.
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Success
+                    message: User fetched successfully
+                    data:
+                      id: 1
+                      name: Denver
+                      photo: image_url
+                      bio: Miguel Ángel García de la Herrán, best known as Miguel
+                        Herrán, is a Spanish actor.
+                      email: "<EMAIL>"
+                      posts_counter: 2
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      photo:
+                        type: string
+                      bio:
+                        type: string
+                      email:
+                        type: string
+                      posts_counter:
+                        type: integer
+                    required:
+                    - id
+                    - name
+                    - photo
+                    - bio
+                    - email
+                    - posts_counter
+                required:
+                - status
+                - message
+                - data
+        '404':
+          description: User not found
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    status: Error
+                    message: Failed to fetch user!
+                    errors: 'User not found with id: ''invalid'''
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
